@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-4">Draft Posts</h1>
+
+      {% if posts %}
+        {% for post in posts %}
+          <div class="post">
+            <div class="date"></div>
+            <h1>
+              <a href="{% url 'draft-detail' post.pk %}"
+              class="text-decoration-none fst-italic">{{ post.title }}</a>
+            </h1>
+            <div class="date author">@{{ post.author.username }}</div>
+            <p>{{ post.content|truncatechars:200 }}</p>
+               <a href="{% url 'draft-detail' post.pk %}">View more</a>
+            </p>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}
