@@ -92,4 +92,3 @@ class DraftPublishView(LoginRequiredMixin, View):
         post.published_at = timezone.now()
         post.save()
         return redirect("post-list")
-    
